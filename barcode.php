@@ -31,7 +31,7 @@ function save_barcode($post_id){if(!empty($_POST['_barcode'])) update_post_meta(
 add_action('woocommerce_product_after_variable_attributes','add_barcode_variations',10,3);
 function add_barcode_variations($loop,$variation_data,$variation){
 	$variation_barcode = get_post_meta($variation->ID,"_barcode",true);
-	if(!$variation_barcode ) $variation_barcode = "";
+	if(!$variation_barcode) $variation_barcode = "";
 	woocommerce_wp_text_input(
 		array(
 			'id'          => '_barcode_' . $loop,
@@ -44,7 +44,7 @@ function add_barcode_variations($loop,$variation_data,$variation){
 	);
 }
 //Save Variation Barcode
-add_action( 'woocommerce_save_product_variation','save_barcode_variations',10,2);
+add_action('woocommerce_save_product_variation','save_barcode_variations',10,2);
 function save_barcode_variations($variation_id,$key){
 	$barcode = $_POST["_barcode_$key"];
 	if(!empty($barcode)) update_post_meta($variation_id,'_barcode',sanitize_text_field($barcode));
