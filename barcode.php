@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: WooCommerce Barcode
-Plugin URI: https://www.rafaeldejongh.com
+Plugin URI: https://github.com/RafaelDeJongh/WooCommerce-Barcode
 Description: A plugin that adds a barcode field to WooCommerce Products
 Author: Rafael De Jongh
 Version: 1.0
@@ -34,12 +34,11 @@ function add_barcode_variations($loop,$variation_data,$variation){
 	if(!$variation_barcode) $variation_barcode = "";
 	woocommerce_wp_text_input(
 		array(
-			'id'          => '_barcode_' . $loop,
-			'label'       => __('Variation Barcode','woocommerce'),
-			'placeholder' => 'Scan Barcode',
-			'desc_tip'    => 'true',
-			'description' => __('Scan barcode.','woocommerce'),
-			'value'       => $variation_barcode
+			'id'            => '_barcode_' . $loop,
+			'label'         => __('Variation Barcode','woocommerce'),
+			'placeholder'   => 'Scan Barcode',
+			'value'         => $variation_barcode,
+			'wrapper_class' => 'form-row form-row-full'
 		)
 	);
 }
